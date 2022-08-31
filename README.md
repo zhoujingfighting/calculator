@@ -14,3 +14,5 @@
 * [JS:xxx]代表与js代码相关
 * [Dependency]添加一些依赖
 * [Readme] 更新readme文档
+* [Configuration] 更新项目的配置文档
+* [Package]更新package.json的配置,例如`scripts`等
