@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:addon": "node-gyp rebuild -j 6",
+    "build:addon-dev": "node-gyp rebuild --debug -j 6",
+    "test:unix": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts",
+    "test:windows": "set TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register tests/*.test.ts"
   },
   "repository": {
     "type": "git",
@@ -15,16 +18,22 @@
     "c++ addon"
   ],
   "dependencies": {
-    "node-addon-api":"5.0.0",
-    "bindings":"1.5.0",
-    "mocha":"10.0.0",
-    "ts-node-dev":"2.0.0",
-    "node-gyp":"6.1.0"
+    "bindings": "1.5.0",
+    "node-addon-api": "5.0.0",
+    "node-gyp": "6.1.0"
   },
   "author": "zhoujingfighting",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/zhoujingfighting/calculator/issues"
   },
-  "homepage": "https://github.com/zhoujingfighting/calculator#readme"
+  "type": "commonjs",
+  "homepage": "https://github.com/zhoujingfighting/calculator#readme",
+  "devDependencies": {
+    "@types/chai": "^4.3.3",
+    "@types/mocha": "^9.1.1",
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
+    "ts-node": "^10.9.1"
+  }
 }
