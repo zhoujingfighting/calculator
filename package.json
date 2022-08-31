@@ -1,0 +1,29 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhoujingfighting/calculator.git"
+  },
+  "keywords": [
+    "calculator",
+    "c++ addon"
+  ],
+  "dependencies": {
+    "node-addon-api":"5.0.0",
+    "bindings":"1.5.0",
+    "mocha":"10.0.0",
+    "ts-node-dev":"2.0.0"
+  },
+  "author": "zhoujingfighting",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhoujingfighting/calculator/issues"
+  },
+  "homepage": "https://github.com/zhoujingfighting/calculator#readme"
+}
