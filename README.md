@@ -12,4 +12,5 @@
 
 * [c++:xxx]代表与c++代码相关
 * [JS:xxx]代表与js代码相关
-* [xx]可能是代表一些其他琐碎的提交
+* [Dependency]添加一些依赖
+* [Readme] 更新readme文档
