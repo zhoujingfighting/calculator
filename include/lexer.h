@@ -1,6 +1,6 @@
 /**
  * @file lexer.h
- * @author zhou jing (254644528@qq.com)
+ * @author Zhou Jing (254644528@qq.com)
  * @brief The lexer header file of calculator
  * @version 0.1
  * @date 2022-08-31
@@ -75,8 +75,7 @@ public:
   Calculator::Token lexToken(bool IsLineStart = false);
 
   char getNextChar();
-  int peekNextChar(int Index);
-  void skipComment();
+  char peekNextChar(int Index);
   Calculator::Token lexIdentifier();
   Calculator::Token lexNumber();
 };

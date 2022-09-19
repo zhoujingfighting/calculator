@@ -1,6 +1,6 @@
 /**
  * @file addon.cpp
- * @author zhou jing (254644528@qq.com)
+ * @author Zhou Jing (254644528@qq.com)
  * @brief wrapper of calculator addon
  * @version 0.1
  * @date 2022-08-31

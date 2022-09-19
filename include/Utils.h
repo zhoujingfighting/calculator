@@ -1,6 +1,6 @@
 /**
  * @file util.h
- * @author zhou jing (254644528@qq.com)
+ * @author Zhou Jing (254644528@qq.com)
  * @brief The lexer header file of calculator
  * @version 0.1
  * @date 2022-09-10
@@ -11,12 +11,20 @@
 #include <map>
 namespace Calculator {
 enum Token {
+
+  LeftParen,  // (
+  RightParen, // )
+  Id,         // identifier
   // Basic binary operator
   Plus,     // +
   Multiply, // *
   Minor,    // -
   Divide,   // /
-  Eof
+  Eof,      // end of netlist string
+  Error,    // lexer error
+  SciNumVal, // scientific number
+  FloatVal, // float number
+  IntVal
 };
 
 /// Arithmetic operator priority map

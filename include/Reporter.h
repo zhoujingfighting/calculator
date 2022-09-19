@@ -1,6 +1,6 @@
 /**
  * @file ErrorReporter.h
- * @author zhou jing (254644528@qq.com)
+ * @author Zhou Jing (254644528@qq.com)
  * @brief The error reporter for this calculator
  * @version 0.1
  * @date 2022-09-10
