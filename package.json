@@ -6,8 +6,7 @@
   "scripts": {
     "build:addon": "node-gyp rebuild -j 6",
     "build:addon-dev": "node-gyp rebuild --debug -j 6",
-    "test:unix": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts",
-    "test:windows": "set TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register tests/*.test.ts"
+    "test": "mocha -r ts-node/register tests/*.test.ts"
   },
   "repository": {
     "type": "git",
