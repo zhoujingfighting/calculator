@@ -8,12 +8,13 @@
  * @copyright Copyright (c) 2022
  * 
  */
-
+#include "parser.h"
 #include "lexer.h"
 #include "parser.h"
 #include <iostream>
 
 int main(void) {
-    
+    CalculatorParser parser;
+    parser.parse("1+2");
     return 0;
 }

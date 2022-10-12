@@ -8,6 +8,10 @@
  * @copyright Copyright (c) 2022
  *
  */
+
+#ifndef UTILS_H
+#define UTILS_H
+
 #include <map>
 namespace Calculator {
 enum Token {
@@ -36,3 +40,5 @@ typedef struct TokenLoc {
   int endColumn;
 } TokenLoc;
 } // namespace Calculator
+
+#endif // UTILS_H

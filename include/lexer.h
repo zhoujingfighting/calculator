@@ -35,13 +35,16 @@ class CalculatorLexer {
   ErrorReporter Reporter;
 
 public:
+  CalculatorLexer(){};
   ~CalculatorLexer() = default;
   /// Init the lexer source buffer with input file
   bool init(string FileName);
 
-  Calculator::Token lex();
+  Calculator::Token lex() {
+    return CurCode = lexToken(CurPtr == &*CurBuf.cbegin());
+  };
 
-  Calculator::Token getCode();
+  Calculator::Token getCode() { return CurCode; };
   /// Get current token location
   Calculator::TokenLoc getLoc();
 
