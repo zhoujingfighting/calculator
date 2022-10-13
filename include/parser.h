@@ -13,19 +13,49 @@
 #define PARSER_H
 
 #include "lexer.h"
+#include <stack>
+#include <vector>
 class CalculatorParser {
-
+  stack<char> OperatorStack;
+  stack<double> NumberStack;
+  std::vector<string> PostfixStack;
   CalculatorLexer Lexer;
   ErrorReporter Reporter;
-  std::string ErrorMsg;
+  // Final caculated result
+  double Result;
 
 public:
   /// Entry point for parsing calculators
   /// the argument is the calculator content
   bool parse(string);
-  bool parseCalculatorContent();
-  void setErrorMsg(string Msg) { ErrorMsg = Msg; };
-  string getErrorMsg(string Msg) { return ErrorMsg; };
+  bool parseExpression();
+  std::vector<string> getPostFix() { return PostfixStack; };
+  double calculate(vector<string>);
+  bool isOperator(Calculator::Token Tok) {
+    switch (Tok) {
+    case Calculator::Plus:
+    case Calculator::Minor:
+    case Calculator::Multiply:
+    case Calculator::Divide:
+    case Calculator::Remain:
+    case Calculator::Pow:
+    case Calculator::Fac:
+      return true;
+    default:
+      return false;
+    }
+  }
+
+  bool isNumber(Calculator::Token Tok) {
+    switch (Tok) {
+    case Calculator::FloatVal:
+    case Calculator::IntVal:
+    case Calculator::SciNumVal:
+      return true;
+    default:
+      return false;
+    }
+  }
 };
 
 #endif // PARSER_H

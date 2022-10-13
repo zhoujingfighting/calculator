@@ -16,3 +16,7 @@
 * [Readme] 更新readme文档
 * [Configuration] 更新项目的配置文档
 * [Package]更新package.json的配置,例如`scripts`等
+
+## 项目运行
+* cmake -B build . && cd build 
+./calculator "1+2+2-1"

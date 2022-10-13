@@ -20,15 +20,20 @@ enum Token {
   RightParen, // )
   Id,         // identifier
   // Basic binary operator
-  Plus,     // +
-  Multiply, // *
-  Minor,    // -
-  Divide,   // /
-  Eof,      // end of netlist string
-  Error,    // lexer error
+  Plus,      // +
+  Multiply,  // *
+  Minor,     // -
+  Divide,    // /
+  Remain,    // %
+  Pow,       // ^
+  Fac,       // !
+  Eof,       // end of netlist string
+  Error,     // lexer error
   SciNumVal, // scientific number
-  FloatVal, // float number
-  IntVal
+  FloatVal,  // float number
+  IntVal,
+  // TODO:function using
+  Funcall
 };
 
 /// Arithmetic operator priority map
@@ -41,4 +46,31 @@ typedef struct TokenLoc {
 } TokenLoc;
 } // namespace Calculator
 
+/// @brief The operator priority level
+enum PRIO_LEVEL {
+  PRIO_LV0,
+  PRIO_LV1,
+  PRIO_LV2,
+  PRIO_LV3,
+  PRIO_LV4,
+  PRIO_LV5,
+};
+
+static PRIO_LEVEL getPriLev(Calculator::Token Tok) {
+  switch (Tok) {
+  case Calculator::Plus:
+  case Calculator::Minor:
+    return PRIO_LEVEL::PRIO_LV1;
+  case Calculator::Multiply:
+  case Calculator::Divide:
+  case Calculator::Remain:
+    return PRIO_LEVEL::PRIO_LV2;
+  case Calculator::Pow:
+    return PRIO_LEVEL::PRIO_LV3;    
+  case Calculator::Fac:
+    return PRIO_LEVEL::PRIO_LV4;    
+  default:
+    return PRIO_LEVEL::PRIO_LV5;
+  }
+}
 #endif // UTILS_H

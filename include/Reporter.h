@@ -20,6 +20,8 @@ using namespace std;
 
 class ErrorReporter {
 
+  static string ErrorMsg;
+
 public:
   ErrorReporter(){};
 
@@ -28,6 +30,7 @@ public:
                           "EndColumn: " + to_string(loc.endColumn);
     // This is to print message in the console
     std::cerr << Content << std::endl;
+    setErrorMsg(Content);
     return Content;
   }
 
@@ -42,8 +45,12 @@ public:
         "EndColumn: " + to_string(loc.endColumn) + " ,Value: " + value;
     // This is to print message in the console
     std::cerr << Content << std::endl;
+    setErrorMsg(Content);
     return Content;
   }
-};
 
+  string getErrorMsg() { return ErrorMsg; }
+
+  static void setErrorMsg(string Msg) { ErrorMsg = Msg; }
+};
 #endif // ERRORREPORTER_H

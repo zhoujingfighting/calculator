@@ -54,9 +54,10 @@ public:
   /// right value variable or left value parameter.
   Calculator::Token lookAhead(int Count);
 
-  const string &getCurStrVal();
+  const string &getCurNumVal() { return CurNumberVal; };
 
   const char getCharByToken(Calculator::Token Tok);
+  const Calculator::Token getTokenByChar(char Tok);
 
   const string getStrByToken(Calculator::Token Tok);
 

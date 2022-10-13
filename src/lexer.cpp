@@ -122,10 +122,8 @@ Calculator::Token CalculatorLexer::lexToken(bool IsLineStart) {
 
     if (isalpha(CurChar) || CurChar == '_' || CurChar == '"')
       return lexIdentifier();
-
-    cerr << "Unexpected char: '" << CurChar << "'\n";
+    Reporter.report("Unexpected char: '" + CurChar, getLoc());
     return Calculator::Token::Error;
-
   case EOF:
     return Calculator::Token::Eof; // Reaches the end of a netlist file
 
@@ -163,6 +161,8 @@ Calculator::Token CalculatorLexer::lexToken(bool IsLineStart) {
   case '8':
   case '9':
     return lexNumber();
+  case '#':
+    return Calculator::Eof;
   }
 }
 
@@ -289,4 +289,41 @@ Calculator::Token CalculatorLexer::lexNumber() {
 
 Calculator::TokenLoc CalculatorLexer::getLoc() {
   return {StartLine, EndColumn};
+}
+
+const char CalculatorLexer::getCharByToken(Calculator::Token Tok) {
+  switch (Tok) {
+  case Token::Plus:
+    return '+';
+  case Token::Minor:
+    return '-';
+  case Token::Multiply:
+    return '*';
+  case Token::Divide:
+    return '/';
+  case Token::Remain:
+    return '%';
+  case Token::Fac:
+    return '!';
+  default:
+    return ' ';
+  }
+}
+const Calculator::Token CalculatorLexer::getTokenByChar(char Tok) {
+  switch (Tok) {
+  case '+':
+    return Token::Plus;
+  case '-':
+    return Token::Minor;
+  case '*':
+    return Token::Multiply;
+  case '/':
+    return Token::Divide;
+  case '%':
+    return Token::Remain;
+  case '!':
+    return Token::Fac;
+  default:
+    return Token::Error;
+  }
 }

@@ -9,12 +9,10 @@
  * 
  */
 #include "parser.h"
-#include "lexer.h"
-#include "parser.h"
 #include <iostream>
-
-int main(void) {
+int main(int argc, char** argv) {
     CalculatorParser parser;
-    parser.parse("1+2");
+    parser.parse(string(argv[1]));
+    cout << parser.calculate(parser.getPostFix()) << endl;
     return 0;
 }
