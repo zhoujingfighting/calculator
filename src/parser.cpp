@@ -21,7 +21,7 @@ bool CalculatorParser::parse(string Content) {
   while (!parseCalculatorContent()) {
     // Do nothing
   }
-  if (ErrorMsg.size() >= 1) {
+  if (ErrorMsg.size()) {
     // THis means error happens when parsing the content
     cerr << "Error happened" << endl;
   }
@@ -35,7 +35,8 @@ bool CalculatorParser::parseCalculatorContent() {
     return true;
 
   default:
-    setErrorMsg("TEst");
+  // Return directly and report errors when error detected
+    setErrorMsg(Reporter.report("Unkown token type, Please check!", Lexer.getLoc()));
     return true;
   }
 }
