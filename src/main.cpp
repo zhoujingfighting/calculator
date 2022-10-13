@@ -12,7 +12,7 @@
 #include <iostream>
 int main(int argc, char** argv) {
     CalculatorParser parser;
-    parser.parse("(16/2)*6+3");
+    parser.parse(argv[1]);
     cout << parser.calculate(parser.getPostFix()) << endl;
     return 0;
 }
