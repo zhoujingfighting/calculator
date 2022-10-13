@@ -19,6 +19,7 @@
                 "src/addon.cpp",
                 "src/lexer.cpp",
                 "src/parser.cpp",
+                "src/reporter.cpp",
             ],
             "defines": ["NAPI_DISABLE_CPP_EXCEPTIONS"],
             "conditions": [

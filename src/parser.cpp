@@ -93,7 +93,7 @@ double CalculatorParser::calculate(vector<string> PostfixExp) {
       Tmp.pop();
       Number2 = Tmp.top();
       Tmp.pop();
-      Tmp.push(ceil(Number2 / Number1));
+      Tmp.push(floor(Number2 / Number1));
     }
     else if (PostfixExp[i][0] == '*' && PostfixExp[i].size() == 1) {
       Number1 = Tmp.top();

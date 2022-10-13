@@ -18,5 +18,14 @@
 * [Package]更新package.json的配置,例如`scripts`等
 
 ## 项目运行
-* cmake -B build . && cd build 
+* cmake -B build-cmake . &&  cd build-cmake 
+
 ./calculator "1+2+2-1"
+
+* 用JS的办法运行测试
+```shell
+npm install
+npm run build:addon
+npm run test
+```
+这个就可以打印出JS的测试结果

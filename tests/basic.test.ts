@@ -1,8 +1,11 @@
 import { expect } from 'chai';
-
-describe("Just for test", () => {
-    it("simple equal test", () => {
-        console.log(12321321);
-        expect(12).eq(12);
+const { calculate} = require('../build/Release/calculator.node')
+describe("Test caculator", () => {
+    it("simple tests", () => {
+        expect(calculate("1+2+3")).eq(6);
+        expect(calculate("1+2*3")).eq(7);
+        expect(calculate("(1+2)*6+3")).eq(21);
+        expect(calculate("(16/2)*6+3")).eq(51);
+        expect(calculate("(1/2)*6+3")).eq(3);
     })
 })

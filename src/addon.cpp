@@ -10,16 +10,19 @@
  */
 
 #include "../node_modules/node-addon-api/napi.h"
-
-Napi::String Method(const Napi::CallbackInfo& info) {
+#include "parser.h"
+Napi::Number calculate(const Napi::CallbackInfo& info) {
   Napi::Env env = info.Env();
-  return Napi::String::New(env, "world");
+  CalculatorParser Parser;
+  std::string Content = info[0].ToString().Utf8Value();
+  Parser.parse(Content);
+  return Napi::Number::New(env, Parser.calculate(Parser.getPostFix()));
 }
 
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
-  exports.Set(Napi::String::New(env, "hello"),
-              Napi::Function::New(env, Method));
+  exports.Set(Napi::String::New(env, "calculate"),
+              Napi::Function::New(env, calculate));
   return exports;
 }
 
-NODE_API_MODULE(hello, Init)
+NODE_API_MODULE(calculator, Init)

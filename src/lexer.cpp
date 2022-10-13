@@ -139,6 +139,8 @@ Calculator::Token CalculatorLexer::lexToken(bool IsLineStart) {
     return Calculator::Token::Plus;
   case '*':
     return Calculator::Token::Multiply;
+  case '/':
+    return Calculator::Token::Divide;
   case ' ':
   case '\t':
     // Ignore whitespaces.
