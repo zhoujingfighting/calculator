@@ -18,11 +18,12 @@
 * [Package]更新package.json的配置,例如`scripts`等
 
 ## 项目运行
-* cmake -B build-cmake . &&  cd build-cmake 
+* cmake -B build-cmake -G Ninja . &&  cd build-cmake  && ninja
 
 ./calculator "1+2+2-1"
 
 * 用JS的办法运行测试
+> 至少需要电脑上安装了Python，可以看下安装依赖过程中报啥错，然后解决掉
 ```shell
 npm install
 npm run build:addon
