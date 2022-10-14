@@ -13,12 +13,13 @@
 #define PARSER_H
 
 #include "lexer.h"
+#include "expressionNode.h"
 #include <stack>
 #include <vector>
 class CalculatorParser {
   stack<char> OperatorStack;
   stack<double> NumberStack;
-  std::vector<string> PostfixStack;
+  std::vector<ExpressionNode*> PostfixStack;
   CalculatorLexer Lexer;
   ErrorReporter Reporter;
   // Final caculated result
@@ -29,8 +30,9 @@ public:
   /// the argument is the calculator content
   bool parse(string);
   bool parseExpression();
-  std::vector<string> getPostFix() { return PostfixStack; };
-  double calculate(vector<string>);
+  std::vector<ExpressionNode*> getPostFix() { return PostfixStack; };
+  std::vector<ExpressionNode*> getFuncallPostFix();
+  double calculate(vector<ExpressionNode*>);
   bool isOperator(Calculator::Token Tok) {
     switch (Tok) {
     case Calculator::Plus:

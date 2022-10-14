@@ -200,7 +200,13 @@ Calculator::Token CalculatorLexer::lexIdentifier() {
   }
 
   string Str(IdStart, CurPtr);
-
+  CurStrVal = Str;
+  Kind = StringSwitch<Calculator::Token>(Str)
+             .Case("sin", Calculator::Funcall)
+             .Case("tan", Calculator::Funcall)
+             .Case("cos", Calculator::Funcall)
+             // TODO: add other dot commands
+             .Default(Calculator::Id);
   return Kind;
 }
 

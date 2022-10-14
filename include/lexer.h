@@ -55,6 +55,7 @@ public:
   Calculator::Token lookAhead(int Count);
 
   const string &getCurNumVal() { return CurNumberVal; };
+  const string &getCurStrVal() { return CurStrVal; };
 
   const char getCharByToken(Calculator::Token Tok);
   const Calculator::Token getTokenByChar(char Tok);
