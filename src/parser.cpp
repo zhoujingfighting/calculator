@@ -114,6 +114,10 @@ double CalculatorParser::calculate(vector<ExpressionNode *> PostfixExp) {
           Tmp.push(cos(std::stod(PostfixExp[i + 1]->getValue())));
         } else if (PostfixExp[i]->getValue() == "tan") {
           Tmp.push(tan(std::stod(PostfixExp[i + 1]->getValue())));
+        } else {
+          Reporter.report((string)"Unsupported funcall, please check, " + "'" +
+                              PostfixExp[i]->getValue() + "' ,",
+                          Lexer.getLoc());
         }
       }
       i++;

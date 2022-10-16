@@ -206,7 +206,7 @@ Calculator::Token CalculatorLexer::lexIdentifier() {
              .Case("tan", Calculator::Funcall)
              .Case("cos", Calculator::Funcall)
              // TODO: add other dot commands
-             .Default(Calculator::Id);
+             .Default(Calculator::Funcall);
   return Kind;
 }
 
