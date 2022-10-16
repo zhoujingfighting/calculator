@@ -33,7 +33,7 @@ enum Token {
   FloatVal,  // float number
   IntVal,
   // TODO:function using
-  Funcall
+  FunCall
 };
 
 /// Arithmetic operator priority map

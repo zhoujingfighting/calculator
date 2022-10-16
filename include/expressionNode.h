@@ -16,19 +16,22 @@
 enum NodeType {
   Operator,
   Number,
-  Funcall,
+  FunCall,
 };
 /// Currently we only define belows nodes
 /// Operator, Number, FunCall
 class ExpressionNode {
+  CalculatorLexer Lexer;
   NodeType Type;
   std::string Value;
+  Calculator::TokenLoc Token;
 
 public:
-  ExpressionNode(NodeType Type) : Type(Type){};
-  ExpressionNode(NodeType Type, std::string Value) : Type(Type), Value(Value){};
+  ExpressionNode(NodeType Type, std::string Value)
+      : Type(Type), Value(Value), Token(Lexer.getLoc()){};
   NodeType getNodeType() { return Type; };
   std::string getValue() { return Value; };
+  Calculator::TokenLoc getToken() { return Token; };
 };
 
 #endif

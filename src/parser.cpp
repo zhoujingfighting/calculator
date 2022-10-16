@@ -53,7 +53,7 @@ bool CalculatorParser::parseExpression() {
         OperatorStack.pop();
       }
       OperatorStack.pop(); // Pop unused (
-    } else if (Lexer.getCode() == Calculator::Funcall) {
+    } else if (Lexer.getCode() == Calculator::FunCall) {
       PostfixStack.push_back(new ExpressionNode(
           NodeType::Number, to_string(calculate(getFuncallPostFix()))));
       continue;
@@ -105,7 +105,7 @@ double CalculatorParser::calculate(vector<ExpressionNode *> PostfixExp) {
       default:
         break;
       }
-    } else if (PostfixExp[i]->getNodeType() == NodeType::Funcall) {
+    } else if (PostfixExp[i]->getNodeType() == NodeType::FunCall) {
       // Add basic function support here
       if (PostfixExp[i + 1]) {
         if (PostfixExp[i]->getValue() == "sin") {
@@ -115,9 +115,7 @@ double CalculatorParser::calculate(vector<ExpressionNode *> PostfixExp) {
         } else if (PostfixExp[i]->getValue() == "tan") {
           Tmp.push(tan(std::stod(PostfixExp[i + 1]->getValue())));
         } else {
-          Reporter.report((string)"Unsupported funcall, please check, " + "'" +
-                              PostfixExp[i]->getValue() + "' ,",
-                          Lexer.getLoc());
+            Reporter.report((string)"Unsupported function: " + "'" + PostfixExp[i]->getValue() + "' ,", Lexer.getLoc());
         }
       }
       i++;
@@ -133,7 +131,7 @@ double CalculatorParser::calculate(vector<ExpressionNode *> PostfixExp) {
 std::vector<ExpressionNode *> CalculatorParser::getFuncallPostFix() {
   // Eat until meet ) and the the tmp oprator stack is empty
   vector<ExpressionNode *> Tmp;
-  Tmp.push_back(new ExpressionNode(NodeType::Funcall, Lexer.getCurStrVal()));
+  Tmp.push_back(new ExpressionNode(NodeType::FunCall, Lexer.getCurStrVal()));
   Lexer.lex(); // eat funcall token
   stack<char> TmpOperatorStack;
   TmpOperatorStack.push('(');
@@ -160,7 +158,7 @@ std::vector<ExpressionNode *> CalculatorParser::getFuncallPostFix() {
         TmpOperatorStack.pop();
       }
       TmpOperatorStack.pop(); // Pop unused (
-    } else if (Lexer.getCode() == Calculator::Funcall) {
+    } else if (Lexer.getCode() == Calculator::FunCall) {
       Tmp.push_back(new ExpressionNode(
           NodeType::Number, to_string(calculate(getFuncallPostFix()))));
 
